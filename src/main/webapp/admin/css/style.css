@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+/* order style */
+.order-pending{
+    background-color: rgb(255, 255, 101);
+}
+
+.order-finished{
+    background-color: rgb(177, 243, 177);
+}
+.order-boom{
+    background-color: rgb(245, 112, 79);
+}
