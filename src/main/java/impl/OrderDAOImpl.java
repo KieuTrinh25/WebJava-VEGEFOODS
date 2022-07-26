@@ -159,4 +159,27 @@ public class OrderDAOImpl implements OrderDAO{
         return orderList;
 	}
 
+	@Override
+	public List<Order> findByStatus(String status) {
+		List<Order> orderList = new ArrayList<>();
+        Connection conn = MySQLDriver.getInstance().getConnection();
+        try {
+            String sql = "SELECT * FROM ORDERS WHERE status=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, status);
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String description = rs.getString("description");
+                int users_id = rs.getInt("users_id");
+                orderList.add(new Order(id, name, description, status, users_id));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(OrderDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderList;
+	}
+
 }

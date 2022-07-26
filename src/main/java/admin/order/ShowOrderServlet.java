@@ -13,9 +13,11 @@ import dao.Database;
 import dao.InfoUserDAO;
 import dao.OrderDAO;
 import dao.OrderDetailDAO;
+import dao.UserDAO;
 import model.InfoUser;
 import model.Order;
 import model.OrderDetail;
+import model.User;
 import servlet.BaseServlet;
 
 /**
@@ -42,16 +44,19 @@ public class ShowOrderServlet extends BaseServlet {
 		int orderId = Integer.parseInt(oid);		
         OrderDetailDAO orderDetailDAO = Database.getInstance().getOrderDetailDAO();
         OrderDAO orderDAO = Database.getInstance().getOrderDAO();
-      
+        InfoUserDAO infoUserDAO = Database.getInstance().getInfoUserDAO();
+        UserDAO userDAO = Database.getInstance().getUserDAO();
         Order order = orderDAO.find(orderId);
         log(orderId + ": orderId");
         log(order.getName() + ": orderName");
         
         List<OrderDetail> orderDetailList = orderDetailDAO.findByOrderName(order.getName());
-       
+        InfoUser inf = infoUserDAO.find(order.getUsers_id());
+        User user = userDAO.find(order.getUsers_id());
         request.setAttribute("order", order);
         request.setAttribute("orderDetailList", orderDetailList);
-
+        request.setAttribute("infoUser", inf);
+        request.setAttribute("user", user);
         request.getRequestDispatcher("./admin/orders/show.jsp").forward(request, response);
 	}
 
