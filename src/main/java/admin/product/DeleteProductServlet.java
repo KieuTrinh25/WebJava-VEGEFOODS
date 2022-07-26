@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Database;
 import dao.DatabaseDAO;
 import dao.ProductDAO;
+import servlet.BaseServlet;
 import utils.URLSite;
 
 /**
  * Servlet implementation class DeleteCategoryServlet
  */
 @WebServlet("/DeleteProductServlet")
-public class DeleteProductServlet extends HttpServlet {
+public class DeleteProductServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,7 +33,6 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 int productId = Integer.parseInt(request.getParameter("id"));
-	        DatabaseDAO.init(new Database());
 	        ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
 	        productDAO.delete(productId);
 	        

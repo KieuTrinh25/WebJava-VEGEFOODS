@@ -46,4 +46,18 @@ public class InfoUserDAOImpl implements InfoUserDAO{
 		return null;
 	}
 
+	@Override
+	public InfoUser find(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InfoUser> findByProperty(String column, Object value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

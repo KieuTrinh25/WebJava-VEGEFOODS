@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import dao.UserDAO;
 import db.MySQLDriver;
 import model.User;
@@ -158,10 +159,11 @@ public class UserDAOImpl implements UserDAO{
 		return true;
 	}
 
-	private boolean checkUserExists(String phone) {
+	@Override
+	public boolean checkUserExists(String phone) {
 		 Connection conn = MySQLDriver.getInstance().getConnection();
 		try {
-			String sql = "select * from user where phone = ?";
+			String sql = "select * from users where phone = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, phone);
 			ResultSet rs = stmt.executeQuery();
@@ -174,4 +176,6 @@ public class UserDAOImpl implements UserDAO{
 		return false;
 	}
 
+	
+	
 }

@@ -11,11 +11,12 @@ import javax.servlet.http.HttpSession;
 import dao.DatabaseDAO;
 import dao.UserDAO;
 import utils.URLSite;
+import static utils.Validate.isPhone;;
 
 /**
  * Servlet implementation class SignupServlet
  */
-@WebServlet("/SignupServlet")
+@WebServlet("/SignUpServlet")
 public class SignUpServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,16 +42,25 @@ public class SignUpServlet extends BaseServlet {
 		String phone = request.getParameter("phone");
         String password = request.getParameter("password"); 
         UserDAO userDAO = DatabaseDAO.getInstance().getUserDAO();
-        boolean isRegister = userDAO.register(phone, password);
-        
-        if (isRegister) {
-            System.out.println("Register successfully.");
-            HttpSession session = request.getSession(true);
-            session.setAttribute("logged", true);
-            response.sendRedirect(URLSite.LOGIN_URL);
+        if (isPhone(phone)) {
+        	if (!userDAO.checkUserExists(phone)) {
+        		
+        		boolean isRegister = userDAO.register(phone, password);
+        		if (isRegister) {
+        			System.out.println("Register successfully.");
+        			HttpSession session = request.getSession(true);
+        			session.setAttribute("logged", true);
+        			response.sendRedirect(URLSite.LOGIN_URL);
+        		} else {
+        			System.out.println("Register failed.");
+        			response.sendRedirect(URLSite.SIGNUP_URL);
+        		}
+        	} else {
+        		response.sendRedirect(URLSite.LOGIN_URL);
+        	}
         } else {
-            System.out.println("Register failed.");
-            response.sendRedirect(URLSite.SIGNUP_URL);
+        	System.out.println("Register failed. Phone nummber incorrect.");
+			response.sendRedirect(URLSite.SIGNUP_URL);
         }
 	}
 

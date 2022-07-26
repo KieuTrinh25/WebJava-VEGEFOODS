@@ -201,7 +201,7 @@
 		    					</div>
 		    					<div class="bottom-area d-flex px-3">
 		    						<div class="m-auto d-flex">
-		    								<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+		    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 		    								<span><i class="fa fa-bars" aria-hidden="true"></i></span>
 		    							</a>
 		    							<form action="OrderServlet" method="POST">
@@ -211,22 +211,12 @@
 				                            <input hidden="true" name="price" value="${product.price}">
 				                            <input hidden="true" name="quantity" value="1">
 				                            <input hidden="true" name="action" value="create">
-				                            
-				                            <div class="row mt-2">
-				                                <div class="col-md-1">
-				                                    <input class="form-control shop-cart-quantity product-desc font-basic" maxlength="6"
-				                                        name="quantity" id="quantity" step="1" style="padding: 0px 4px !important;" type="number" min="1"
-				                                        max="94">
-				                                </div>
-				                                <div class="col-md-6">
-				                                    <button class="cart-button font-basic" type="submit">Add To Cart</button>
-				                                </div>
-				                            </div>
-			    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
-			    								<span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-			    							 
-			    							</a>
+				                            <button class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>			    						    							
 			    						</form>
+			    						<a href="#" class="heart d-flex justify-content-center align-items-center ">
+			    							<span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+			    							 
+			    						</a>
 	    							</div>
 	    						</div>
     						</div>

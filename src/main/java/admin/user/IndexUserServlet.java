@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import auth.Auth;
 import dao.DatabaseDAO;
+import dao.InfoUserDAO;
 import dao.UserDAO;
+import model.InfoUser;
 import model.User;
 import servlet.BaseServlet;
 import utils.URLSite;
@@ -42,10 +44,14 @@ public class IndexUserServlet extends BaseServlet {
         if(!Auth.isAdmin()) response.sendRedirect("LoginServlet");
         else {
             UserDAO userDAO = DatabaseDAO.getInstance().getUserDAO();
-
+            InfoUserDAO infoUserDAO = DatabaseDAO.getInstance().getInfoUserDAO();
+            
             List<User> userList = userDAO.all();
+            List<InfoUser> infoUserList = infoUserDAO.all();
             request.setAttribute("userList", userList);
+            request.setAttribute("infoUserList", infoUserList);
             request.getRequestDispatcher("./admin/users/index.jsp").forward(request, response);
+            
         }
 	}
 

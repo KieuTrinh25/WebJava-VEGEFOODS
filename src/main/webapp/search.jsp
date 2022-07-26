@@ -77,10 +77,6 @@
     </section>
     
 <div class="mt-4">
-        <div class="container d-flex">
-            <h6>Search by ${name}</h6>
-        </div>
-    </div>
     <div class="product-area section-space-top-100">
         <div class="container">
             <div class="row">
@@ -88,22 +84,45 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="all-items">
                             <div class="product-item-wrap row">
-                                <c:forEach items="${productList}" var="product">
-                                    <div class="col-xl-3 col-lg-4 col-sm-6">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a href="ProductDetail?id=${product.id}">
-                                                    <img src="${product.images}"
-                                                         alt="Product Image" style=" width: 250px !important;height: 250px !important;">
-                                                </a>
-                                            </div>
-                                            <div class="product-content">
-                                                <a class="product-name" href="ProductDetail?id=${product.id}">${product.name}</a>
-                                                <div>$ ${product.price}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </c:forEach>
+                <c:forEach items="${productList}" var="product">
+    				<div class="col-md-6 col-lg-3 ftco-animate">
+    					<div class="product">
+    					
+							<a href="#" class="img-prod"><img class="img-fluid " src="${product.images}" width="100%" height="200px"  >
+	    						<span class="status">30%</span>
+	    						
+	    					</a>
+    						<div class="text py-3 pb-4 px-3 text-center">
+	    						<h3><a href="#">${product.name}</a></h3>
+	    						<div class="d-flex">
+	    							<div class="pricing">
+			    						<p class="price"><span class="price-sale">${product.price}$</span></p>
+			    					</div>
+		    					</div>
+		    					<div class="bottom-area d-flex px-3">
+		    						<div class="m-auto d-flex">
+		    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+		    								<span><i class="fa fa-bars" aria-hidden="true"></i></span>
+		    							</a>
+		    							<form action="OrderServlet" method="POST">
+				                            <input hidden="true" type="number" name="productId" value="${product.id}">
+				                            <input hidden="true" name="images" value="${product.images}">
+				                            <input hidden="true" name="productName" value="${product.name}">
+				                            <input hidden="true" name="price" value="${product.price}">
+				                            <input hidden="true" name="quantity" value="1">
+				                            <input hidden="true" name="action" value="create">
+				                            <button class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>			    						    							
+			    						</form>
+			    						<a href="#" class="heart d-flex justify-content-center align-items-center ">
+			    							<span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+			    							 
+			    						</a>
+	    							</div>
+	    						</div>
+    						</div>
+	    				</div>
+	    			</div>
+	    		</c:forEach>
                             </div>
                         </div>
                     </div>

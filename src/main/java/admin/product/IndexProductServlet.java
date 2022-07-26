@@ -15,13 +15,14 @@ import dao.Database;
 import dao.DatabaseDAO;
 import dao.ProductDAO;
 import model.Product;
+import servlet.BaseServlet;
 import utils.URLSite;
 
 /**
  * Servlet implementation class IndexProductServlet
  */
 @WebServlet("/IndexProductServlet")
-public class IndexProductServlet extends HttpServlet {
+public class IndexProductServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,7 +42,6 @@ public class IndexProductServlet extends HttpServlet {
 	        Auth.init(request.getSession());
 	        if(!Auth.isAdmin()) response.sendRedirect("LoginServlet");
 	        else {
-	            DatabaseDAO.init(new Database());
 	            ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
 
 	            List<Product> productList = productDAO.all();

@@ -109,9 +109,16 @@
 			    								<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 			    								<span><i class="fa fa-bars" aria-hidden="true"></i></span>
 			    							</a>
-			    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-			    								<span><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>
-			    							</a>
+			    							<form action="OrderServlet" method="POST">
+				                            <input hidden="true" type="number" name="productId" value="${product.id}">
+				                            <input hidden="true" name="images" value="${product.images}">
+				                            <input hidden="true" name="productName" value="${product.name}">
+				                            <input hidden="true" name="price" value="${product.price}">
+				                            <input hidden="true" name="quantity" value="1">
+				                            <input hidden="true" name="action" value="create">
+			                               	<button class="btn btn-primary"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+			    						</form>
+			    							
 			    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
 			    								<span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
 			    							 

@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import auth.Auth;
+import servlet.BaseServlet;
 import utils.URLSite;
 
 /**
  * Servlet implementation class AdminServlet
  */
 @WebServlet("/DashboardServlet")
-public class DashboardServlet extends HttpServlet {
+public class DashboardServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**

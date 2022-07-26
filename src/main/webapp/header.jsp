@@ -44,13 +44,13 @@
 	          <li class="nav-item"><a class="nav-link" href="BlogServlet">Blog</a></li>
 	          <li class="nav-item"><a class="nav-link" href="ContactServlet">Contact</a></li>
 	          
-			  <div class="search " style="margin-right:40px; margin-top: 10px; border-radius:20px">
-                  <form action="SearchServlet" method="GET" class="header-search">
-                      <input type="hidden" name="contlioller" value="homeController">
-                      <input type="hidden" name="page" value="search">
-                      <input name="q" type="search-box" size="20" placeholder="Search...">
-                  </form>                     
-              </div>
+			  
+             <form action="SearchServlet" method="GET" class="header-search" style="margin-right:40px; margin-top: 10px; border-radius:20px">
+      
+                   <input type="text" name="name" placeholder="Search" class="form-control ms-1">
+                
+             </form>
+              
               <li class="nav-item cta cta-colored"><a href="CartServlet" class="nav-link"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>[0]</a></li>
               <%             
               if (session.getAttribute("logged") != null) {

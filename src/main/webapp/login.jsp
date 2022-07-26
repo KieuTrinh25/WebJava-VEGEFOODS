@@ -20,13 +20,13 @@
 	</style>
     
 <body>
-	<a class="login" href="HomeServlet"><img src="./Public/images/contact.png" width="150px"></a>
+	<a class="login" href="HomeServlet"><img src="images/contact.png" width="50px" height="50px"></a>
 	 
 	<hr>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
         
-            <form action="SignupServlet" method="POST">
+            <form action="SignUpServlet" method="POST">
                 <input type="hidden" name="page" value="register">
                 <h1>ĐĂNG KÝ</h1>
                 <div class="social-container">
@@ -35,8 +35,11 @@
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>Điền các thông tin để đăng ký</span>
+                <label for="name">
+                	<input type="text" id="name" placeholder="Enter name"  name="name" class="form-control" >
+                </label>
                 <label for="phone">
-                	<input type="text" id="phone" placeholder="Enter phone"  name="phone" >
+                	<input type="text" id="phone" placeholder="Enter phone"  name="phone" class="form-control" >
                 </label>
                 <label for="password">
 	                <input id="password" type="password" placeholder="Password" class="form-control" name="password" value="">
@@ -58,7 +61,7 @@
                 </div>
                 <span>Điền thông tin tài khoản để đăng nhập</span>
                 <label for="phone">
-                <input type="text" id="phone" placeholder="Phone"  name="phone" >
+                <input type="text" id="phone" placeholder="Phone"  name="phone" class="form-control">
                 </label>
                 <label for="password">
                 <input id="password" type="password" placeholder="Password" class="form-control" name="password" value="">
