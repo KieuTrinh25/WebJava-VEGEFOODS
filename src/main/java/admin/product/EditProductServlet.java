@@ -16,13 +16,14 @@ import dao.DatabaseDAO;
 import dao.ProductDAO;
 import model.Category;
 import model.Product;
+import servlet.BaseServlet;
 import utils.URLSite;
 
 /**
  * Servlet implementation class EditCategoryServlet
  */
 @WebServlet("/EditProductServlet")
-public class EditProductServlet extends HttpServlet {
+public class EditProductServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -42,11 +43,10 @@ public class EditProductServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");  
-        DatabaseDAO.init(new Database());
+
         CategoryDAO categoryDAO =  DatabaseDAO.getInstance().getCategoryDAO();
         List<Category> categoryList = categoryDAO.all();
         
-        DatabaseDAO.init(new Database());
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
         Product product = productDAO.find(productId);
         

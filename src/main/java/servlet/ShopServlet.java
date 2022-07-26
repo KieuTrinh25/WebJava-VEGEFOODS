@@ -20,7 +20,7 @@ import model.Product;
  * Servlet implementation class ShopServlet
  */
 @WebServlet("/ShopServlet")
-public class ShopServlet extends HttpServlet {
+public class ShopServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -35,7 +35,7 @@ public class ShopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DatabaseDAO.init(new Database());
+
 		ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
 		List<Product> productList = productDAO.all();
 		

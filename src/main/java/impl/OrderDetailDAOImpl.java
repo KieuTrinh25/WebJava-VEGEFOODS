@@ -90,20 +90,72 @@ public class OrderDetailDAOImpl implements OrderDetailDAO{
 
 	@Override
 	public OrderDetail find(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		 Connection conn = MySQLDriver.getInstance().getConnection();
+	        try {
+	            String sql = "SELECT * FROM ORDERS_DETAILS WHERE ID=? LIMIT 1";
+	            PreparedStatement stmt = conn.prepareStatement(sql);
+	            stmt.setInt(1, id);
+	            
+	            ResultSet rs = stmt.executeQuery();
+	            while(rs.next()){
+	                String orders_code = rs.getString("orders_code");
+	                int productId = rs.getInt("products_id");
+	                String productName = rs.getString("Products_name");
+	                int quantity = rs.getInt("quantity");
+	                return new OrderDetail(id, orders_code, productId, productName, quantity);
+	            }
+	        } catch (SQLException ex) {
+	            return null;
+	        }
+	        return null;
 	}
 
 	@Override
 	public List<OrderDetail> findByProperty(String column, Object value) {
-		// TODO Auto-generated method stub
-		return null;
+		List<OrderDetail> orderDetailList = new ArrayList<>();
+        Connection conn = MySQLDriver.getInstance().getConnection();
+        try {
+            String sql = "SELECT * FROM ORDERS_DETAILS WHERE ?=?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, column);
+            stmt.setString(2, value.toString());
+            
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+            	int id = rs.getInt("id");
+                String orders_code = rs.getString("orders_code");
+                int productId = rs.getInt("products_id");
+                String productName = rs.getString("Products_name");
+                int quantity = rs.getInt("quantity");
+                orderDetailList.add(new OrderDetail(id, orders_code, productId, productName, quantity));
+            }
+        } catch (SQLException ex) {
+        	Logger.getLogger(OrderDetailDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return orderDetailList;
 	}
 
 	@Override
-	public List<OrderDetail> findByOrderName(String orderName) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderDetail> findByOrderName(String orderCode) {
+		 List<OrderDetail> orderDetailList = new ArrayList<>();
+	        Connection conn = MySQLDriver.getInstance().getConnection();
+	        try {
+	            String sql = "SELECT * FROM ORDERS_DETAILS WHERE ORDERS_CODE=?";
+	            PreparedStatement stmt = conn.prepareStatement(sql);
+	            stmt.setString(1, orderCode);
+	            ResultSet rs = stmt.executeQuery();
+	            while(rs.next()){
+	            	int id = rs.getInt("id");
+	                String orders_code = rs.getString("orders_code");
+	                int productId = rs.getInt("products_id");
+	                String productName = rs.getString("Products_name");
+	                int quantity = rs.getInt("quantity");
+	                orderDetailList.add(new OrderDetail(id, orders_code, productId, productName, quantity));
+	            }
+	        } catch (SQLException ex) {
+	        	Logger.getLogger(OrderDetailDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	        return orderDetailList;
 	}
 
 }

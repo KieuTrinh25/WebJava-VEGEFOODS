@@ -15,13 +15,14 @@ import dao.DatabaseDAO;
 import dao.ProductDAO;
 import model.Category;
 import model.Product;
+import servlet.BaseServlet;
 import utils.URLSite;
 
 /**
  * Servlet implementation class CreateCategoryServlet
  */
 @WebServlet("/CreateProductServlet")
-public class CreateProductServlet extends HttpServlet {
+public class CreateProductServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -40,7 +41,6 @@ public class CreateProductServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");  
-		DatabaseDAO.init(new Database());
 	        CategoryDAO categoryDAO =  DatabaseDAO.getInstance().getCategoryDAO();
 	        List<Category> categoryList = categoryDAO.all();
 	        
@@ -61,8 +61,7 @@ public class CreateProductServlet extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         String images = request.getParameter("image");
         int categoryId = Integer.parseInt(request.getParameter("Categories_id"));
-      
-        DatabaseDAO.init(new Database());
+
         ProductDAO productDAO = DatabaseDAO.getInstance().getProductDAO();
         Product product = new Product(name, price, quantity, images, categoryId);
         

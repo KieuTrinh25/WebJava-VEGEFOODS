@@ -96,7 +96,7 @@
 	                                      <td class="product-remove">
 	                                          <form action="OrderServlet" method="post">
 	                                              <input type="hidden" name="action" value="delete">
-	                                              <button type="submit"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
+	                                              <button><i class="fa fa-times-circle" aria-hidden="true"></i></button>
 	                                              <input type="hidden" name="productId" value="${orderDetail.productId}">
 	                                              
 	                                          </form>
@@ -114,13 +114,12 @@
 	                              </c:forEach>                               	
 							    </tbody>					   
 							  </table>
-						  </div>
-						               
-    			</div>
-    			
+						  </div>						               
+    			</div>   			
     		</div>	
-    		<div class="row justify-content-end">
-  						<form action="CheckOutServlet" class="info" method="get">
+    		
+  			<form action="CheckOutServlet" class="info" method="get">
+  			  <div class="row justify-content-end">
     			<div class="col-md-7 mt-5 cart-wrap ftco-animate">
     				<div class="cart-total mb-3">
     					<h3>Estimate shipping and tax</h3>
@@ -147,8 +146,9 @@
     				</div>
              		<p><button type="submit" href="CheckOutServlet"class="btn btn-primary py-3 px-4">Pay</button></p>
     			</div>
-	            		</form>
     		</div>
+	     </form>
+    		
 			</div>	
 		</div>
 </section>

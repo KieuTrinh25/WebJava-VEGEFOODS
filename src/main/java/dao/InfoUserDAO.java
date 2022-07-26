@@ -3,6 +3,8 @@ package dao;
 import java.util.List;
 
 import model.InfoUser;
+import model.Order;
+import model.OrderDetail;
 
 
 
@@ -12,5 +14,7 @@ public interface InfoUserDAO {
     public boolean delete(int infoUserId);
     
     public List<InfoUser> all();
-    
+    public InfoUser find(int id);
+    public List<InfoUser> findByProperty(String column, Object value);
+
 }

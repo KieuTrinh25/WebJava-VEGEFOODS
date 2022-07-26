@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ProductServlet
  */
 @WebServlet("/ProductServlet")
-public class ProductServlet extends HttpServlet {
+public class ProductServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
