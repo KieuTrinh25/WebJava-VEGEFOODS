@@ -12,4 +12,5 @@ public interface OrderDAO {
     public List<Order> all();
     public Order find(int id);
     public List<Order> findByProperty(String column, Object value);
+    public List<Order> findByStatus(String status);
 }

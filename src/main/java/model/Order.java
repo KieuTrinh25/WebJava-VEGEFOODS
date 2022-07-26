@@ -21,6 +21,15 @@ public class Order {
 		this.status = status;
 		this.users_id = users_id;
 	}
+	
+	public Order(String name, String description, String status, int users_id) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.status = status;
+		this.users_id = users_id;
+	}
+
 	public int getId() {
 		return id;
 	}

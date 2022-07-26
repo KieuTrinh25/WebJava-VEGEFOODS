@@ -76,16 +76,12 @@
                                     </thead>
                                    
                                     <tbody>
-										<c:set var="index" value="1"/>
-                                    	<c:forEach items="${infoUserList}" var="ifuser">                                     
                                             <tr>
-                                                <td>${ifuser.full_name}</td>
+                                                <td>${infoUser.full_name}</td>
                                                 <td>${user.phone}</td>
-                                                <td>${ifuser.address}</td>
-                                                <td>${ifuser.note}</td>
+                                                <td>${infoUser.address}</td>
+                                                <td>${infoUser.note}</td>
                                              </tr>   
- 										<c:set var="index" value="${index + 1}"/>
-                                    </c:forEach>                               
                                     </tbody>
                                 </table>
                             </div>
@@ -108,7 +104,7 @@
  									<c:set var="index" value="1"/>
                                     <c:forEach items="${orderDetailList}" var="orderDetail">
                                     <tr>
-                                    <td>${index}</td>
+                                    	<td>${index}</td>
                                         <td>${orderDetail.orders_code}</td>
                                         <td>${orderDetail.products_id}</td>
                                         <td>${orderDetail.products_name}</td>  

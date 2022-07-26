@@ -1,12 +1,7 @@
 package dao;
 
 import java.util.List;
-
 import model.InfoUser;
-import model.Order;
-import model.OrderDetail;
-
-
 
 public interface InfoUserDAO {
 	public boolean insert(InfoUser infoUser);

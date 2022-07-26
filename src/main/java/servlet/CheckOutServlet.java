@@ -52,7 +52,7 @@ public class CheckOutServlet extends BaseServlet {
 	        String description = "Order san pham";
 	        HttpSession session = request.getSession();
 	        User user = (User)session.getAttribute("user");	     
-			Order order = new Order(0, name, description, Order.PENDING_STATUS, user.getId());
+			Order order = new Order( name, description, Order.PENDING_STATUS, user.getId());
 	        order = orderDAO.insert(order);
 	       
 	        InfoUserDAO infoUserDAO = DatabaseDAO.getInstance().getInfoUserDAO();
